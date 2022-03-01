@@ -6,6 +6,10 @@ const quoteText = document.querySelector('#quote');
 // console.log(quoteText.textContent);
 const quoteAuthor = document.querySelector('#author');
 // console.log(quoteAuthor.textContent);
+const newQuoteBtn = document.querySelector('#new-quote');
+// console.log(newQuoteBtn);
+const twitterBtn = document.querySelector('#twitter');
+// console.log(twitterBtn);
 
 let apiQuote;
 function newQuote() {
@@ -37,5 +41,12 @@ async function getQuotes() {
     console.log('Some error!', error);
   }
 }
-
 getQuotes();
+
+function tweetQuote() {
+  const twitterURL = `https://twitter.com/intent/tweet?text=${quoteText.textContent} ~${quoteAuthor.textContent}`;
+  window.open(twitterURL, '_blank');
+}
+
+newQuoteBtn.addEventListener('click', newQuote);
+twitterBtn.addEventListener('click', tweetQuote);
