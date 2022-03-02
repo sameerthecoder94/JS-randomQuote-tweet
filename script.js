@@ -10,9 +10,24 @@ const newQuoteBtn = document.querySelector('#new-quote');
 // console.log(newQuoteBtn);
 const twitterBtn = document.querySelector('#twitter');
 // console.log(twitterBtn);
+const loader = document.querySelector('.loader');
+// console.log(loader);
+const quoteContainer = document.querySelector('.quote-container');
 
 let apiQuote;
+
+function loading() {
+  loader.hidden = false;
+  quoteContainer.hidden = true;
+}
+function complete() {
+  loader.hidden = true;
+  quoteContainer.hidden = false;
+}
+
 function newQuote() {
+  loading();
+  loader.hidden = false;
   const quote = apiQuote[Math.floor(Math.random() * apiQuote.length)];
   // console.log(quote);
   quoteText.textContent = quote.text;
@@ -28,9 +43,12 @@ function newQuote() {
   } else {
     quoteText.classList.remove('long-quote');
   }
+
+  complete();
 }
 
 async function getQuotes() {
+  loading();
   try {
     const res = await fetch('https://type.fit/api/quotes');
     const quoteData = await res.json();
