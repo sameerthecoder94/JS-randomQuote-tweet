@@ -12,7 +12,8 @@ body {
   text-align: center;
   display: flex;
   align-items: center;
-  justify-self: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .quote-text {
@@ -55,7 +56,6 @@ button {
   background-color: hsl(0deg 100% 100% / 0.5);
   border-radius: 10px;
   padding: 20px 30px;
-  margin: 200px auto;
 }
 
 .twitter-button:hover {
@@ -85,6 +85,7 @@ button:active {
   height: 120px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
+  margin: 230px auto;
 }
 
 /* Safari */
